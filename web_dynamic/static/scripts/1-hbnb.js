@@ -1,12 +1,11 @@
-#!/usr/bin/node
 
 $(document).ready(function () {
-  let amenityIds = [];
+  let checkedAmenityIds = [];
 
   function updateAmenities () {
     const amenitiesH4 = $('#amenities h4');
 
-    amenitiesH4.text(amenityIds.join(', '));
+    amenitiesH4.text(checkedAmenityIds.join(', '));
   }
 
   $('input[type="checkbox"]').change(function () {
