@@ -1,24 +1,24 @@
 
 $(document).ready(function () {
-  let checkedAmenityIds = [];
+  let checkedAmenityIds = {};
 
   function updateAmenities () {
-    const amenitiesH4 = $('#amenities h4');
-
-    amenitiesH4.text(checkedAmenityIds.join(', '));
+    const amenitiesH4 = $('#amenities_h4');
+    const amenitiesString = Object.values(checkedAmenityIds).join(', ');
+    amenitiesH4.text(amenitiesString);
   }
 
   $('input[type="checkbox"]').change(function () {
-    const amenityId = $(this).data('id');
-
+    const amenityId = $(this).attr('data-id');
+    const amenityName = $(this).attr('data-name');
     if ($(this).prop('checked')) {
-      amenityIds.push(amenityId);
+      // if checked, add amenityId to checked Amenities list
+      checkedAmenityIds[amenityId] = amenityName;
     } else {
-      amenityIds = amenityIds.filter(function (id) {
-        return id !== amenityId;
-      });
+      delete checkedAmenityIds[amenityId];
     }
-
     updateAmenities();
+    console.log(checkedAmenityIds);
   });
+
 });
