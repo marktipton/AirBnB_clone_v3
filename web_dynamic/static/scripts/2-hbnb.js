@@ -1,4 +1,5 @@
 
+
 $(document).ready(function () {
   let checkedAmenityIds = {};
 
@@ -13,13 +14,10 @@ $(document).ready(function () {
     method: 'GET',
     succes: function (data) {
       if (data.status === 'OK') {
-        $('#api_status').addClass('available');
+        $('div#api_status').addClass('available');
       } else {
-        $('#api_status').removeClass('available');
+        $('div#api_status').removeClass('available');
       }
-    },
-    error: function () {
-      $('#api_status').removeClass('available');
     }
   });
 
