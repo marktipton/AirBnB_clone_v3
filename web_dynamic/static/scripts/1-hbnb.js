@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-  let checkedAmenityIds = {};
+  const checkedAmenityIds = {};
 
   function updateAmenities () {
     const amenitiesH4 = $('#amenities_h4');
@@ -20,5 +20,4 @@ $(document).ready(function () {
     updateAmenities();
     console.log(checkedAmenityIds);
   });
-
 });

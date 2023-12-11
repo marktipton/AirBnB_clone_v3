@@ -8,10 +8,8 @@ from models.amenity import Amenity
 from models.place import Place
 from os import environ
 from flask import Flask, render_template
-from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 # app.jinja_env.trim_blocks = True
 # app.jinja_env.lstrip_blocks = True
 
