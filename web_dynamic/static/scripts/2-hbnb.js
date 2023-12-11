@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-  const checkedAmenityIds = {};
+  let checkedAmenityIds = {};
 
   function updateAmenities () {
     const amenitiesH4 = $('#amenities_h4');
@@ -8,6 +8,20 @@ $(document).ready(function () {
     amenitiesH4.text(amenitiesString);
   }
 
+  function checkApiStatus () {
+    $.get('http://0.0.0.0:5001/api/v1/status/')
+      .done(function (data) {
+        const apiStatusDiv = $('div#api_status');
+        if (data.status == 'OK') {
+          apiStatusDiv.attr('class', 'available');
+        } else {
+          apiStatusDiv.removeClass('available');
+        }
+      })
+      .fail(function (error) {
+        console.log(error);
+      });
+  }
   $('input[type="checkbox"]').change(function () {
     const amenityId = $(this).attr('data-id');
     const amenityName = $(this).attr('data-name');
@@ -18,6 +32,7 @@ $(document).ready(function () {
       delete checkedAmenityIds[amenityId];
     }
     updateAmenities();
+    checkApiStatus();
     console.log(checkedAmenityIds);
   });
 });
