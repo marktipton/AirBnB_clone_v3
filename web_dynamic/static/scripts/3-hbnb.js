@@ -33,7 +33,7 @@ $(document).ready(function () {
     console.log(checkedAmenityIds);
   });
   function fetchPlaces (dict) {
-    $.post('http://0.0.0.0:5001/api/v1/places_search/', dict,  function (data) {
+    $.post(`http://${window.location.hostname}:5001/api/v1/places_search/`, dict,  function (data) {
       console.log(data);
     }, 'json');
   }
