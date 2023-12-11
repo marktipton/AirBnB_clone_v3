@@ -32,11 +32,16 @@ $(document).ready(function () {
     updateAmenities();
     console.log(checkedAmenityIds);
   });
-  function fetchPlaces (dict) {
-    $.post(`http://${window.location.hostname}:5001/api/v1/places_search/`, dict,  function (data) {
-      console.log(data);
-    }, 'json');
+  function fetchPlaces () {
+    $.ajax({
+      type: "POST",
+      url: `http://${window.location.hostname}:5001/api/v1/places_search/`,
+      contentType: "application/json",
+      data: '{}',
+      success: (data) => {
+        console.log(data)
+      }
+    });
   }
-  let placesDict = {};
-  fetchPlaces(placesDict);
+  fetchPlaces();
 });
