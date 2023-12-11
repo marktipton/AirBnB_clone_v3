@@ -41,7 +41,8 @@ $(document).ready(function () {
       success: (data) => {
         console.log(data);
         const placesSection = $('section.places')
-        for (const place of data) {
+        const sortedData = data.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
+        for (const place of sortedData) {
           placesSection.append(`
           <article>
             <div class="title_box">
