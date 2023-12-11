@@ -9,6 +9,15 @@ header .logo {
     left: 20px;
     height: 100%;
 }
-header .available {
+header #api_status {
+    margin-top: -55px;
+    position: absolute;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #cccccc;
+}
+header #api_status.available {
     background-color: #ff545f;
 }
