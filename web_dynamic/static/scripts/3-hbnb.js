@@ -41,7 +41,7 @@ $(document).ready(function () {
       success: (data) => {
         console.log(data);
         const placesSection = $('section.places')
-        for (const place in data) {
+        for (const place of data) {
           placesSection.append(`<article>
             <div class="title_box">
               <h2>${ place.name }</h2>
