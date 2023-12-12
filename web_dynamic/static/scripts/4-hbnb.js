@@ -70,22 +70,11 @@ $(document).ready(function () {
       type: "POST",
       url: `http://${window.location.hostname}:5001/api/v1/places_search/`,
       contentType: "application/json",
-      data: '{}',
+      data: JSON.stringify(checkedAmenityIds.keys()),
       success: (data) => {
         console.log(data);
         const placesSection = $('section.places')
-        let filteredData = [];
-        for (const place of data) {
-          const placeAmenities = place.amenities;
-          for (const amenity of placeAmenities) {
-            if (!filteredData.includes(place)) {
-              if (checkedAmenityIds.values.includes(amenity.name)) {
-                filteredData.append(place);
-              }
-            }
-          }
-        }
-        const sortedData = filteredData.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
+        const sortedData = data.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
         for (const place of sortedData) {
           placesSection.append(`
           <article>
