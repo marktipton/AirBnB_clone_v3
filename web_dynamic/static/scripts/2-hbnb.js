@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-  let checkedAmenityIds = {};
+  const checkedAmenityIds = {};
 
   function updateAmenities () {
     const amenitiesH4 = $('#amenities_h4');
@@ -10,15 +10,15 @@ $(document).ready(function () {
 
   function checkApiStatus () {
     $.get('http://127.0.0.1:5001/api/v1/status/', function (data) {
-        const apiStatusDiv = $('div#api_status');
-        console.log(apiStatusDiv);
-        if (data.status == 'OK') {
-          apiStatusDiv.addClass('available');
-        } else {
-          apiStatusDiv.removeClass('available');
-        }
-      });
-    }
+      const apiStatusDiv = $('div#api_status');
+      console.log(apiStatusDiv);
+      if (data.status == 'OK') {
+        apiStatusDiv.addClass('available');
+      } else {
+        apiStatusDiv.removeClass('available');
+      }
+    });
+  }
   checkApiStatus();
   $('input[type="checkbox"]').change(function () {
     const amenityId = $(this).attr('data-id');
